@@ -1,0 +1,33 @@
+{
+  "masked_environments": [
+    "verbatim",
+    "Verbatim",
+    "lstlisting",
+    "minted"
+  ],
+  "excluded_commands": {
+    "cite": 1,
+    "citep": 1,
+    "citet": 1,
+    "label": 1,
+    "ref": 1,
+    "pageref": 1,
+    "url": 1,
+    "href": 2,
+    "includegraphics": 1,
+    "bibliography": 1,
+    "bibliographystyle": 1
+  },
+  "verbatim_commands": [
+    "verb",
+    "lstinline"
+  ],
+  "rules": [
+    {
+      "term": "英語表記 Engine",
+      "pattern": "\\bEngine\\b",
+      "severity": "error",
+      "recommendation": "日本語本文では「エンジン」を使用する。固有名詞の場合は用語辞書で例外を明示する。"
+    }
+  ]
+}

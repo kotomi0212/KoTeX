@@ -1,0 +1,171 @@
+% midreport.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{midreport}
+
+%================================================
+% 余白・本文サイズ
+%================================================
+
+\RequirePackage[
+  top=20mm,
+  bottom=20mm,
+  left=15mm,
+  right=15mm
+]{geometry}
+
+\makeatletter
+\renewcommand{\normalsize}{%
+  \@setfontsize\normalsize{10pt}{14pt}%
+}
+\makeatother
+
+\normalsize
+
+%================================================
+% 基本パッケージ
+%================================================
+
+\RequirePackage{abstract}
+\RequirePackage{indentfirst}
+\RequirePackage{multicol}
+
+%================================================
+% 見出し
+%================================================
+
+\RequirePackage{titlesec}
+
+\titleformat{\section}[block]
+  {\fontsize{11pt}{14pt}\selectfont\bfseries\filcenter}
+  {\thesection}
+  {0.5em}
+  {}
+
+\titleformat{\subsection}
+  {\fontsize{10pt}{14pt}\selectfont\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {}
+
+\titleformat{\subsubsection}
+  {\fontsize{10pt}{14pt}\selectfont\bfseries}
+  {\thesubsubsection}
+  {0.5em}
+  {}
+
+\titlespacing*{\subsubsection}
+  {0pt}
+  {0.8\baselineskip}
+  {0.0\baselineskip}
+
+\titlespacing*{\subsection}
+  {0pt}
+  {0.8\baselineskip}
+  {0.0\baselineskip}
+
+%================================================
+% 図表
+%================================================
+
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table.}
+
+%================================================
+% タイトル
+%================================================
+
+\makeatletter
+
+\def\@etitle{}
+\def\@eauthor{}
+\def\@affiliation{}
+
+\newcommand{\etitle}[1]{%
+  \gdef\@etitle{#1}%
+}
+
+\newcommand{\eauthor}[1]{%
+  \gdef\@eauthor{#1}%
+}
+
+\newcommand{\affiliation}[1]{%
+  \gdef\@affiliation{#1}%
+}
+
+\renewcommand{\maketitle}{%
+  \begin{center}
+    \fontsize{12pt}{18pt}\selectfont
+    {%
+      \bfseries
+      \@title\par
+      \ifx\@etitle\@empty
+      \else
+        \@etitle\par
+      \fi
+    }
+
+    \@author\par
+
+    \ifx\@eauthor\@empty
+    \else
+      \@eauthor\par
+    \fi
+
+    \ifx\@affiliation\@empty
+    \else
+      \@affiliation\par
+    \fi
+  \end{center}
+  \vspace{0pt}%
+}
+
+\makeatother
+
+%================================================
+% Abstract
+%================================================
+
+\renewenvironment{abstract}{%
+  \par
+  \begingroup
+  \list{}{%
+    \leftmargin=4em
+    \rightmargin=4em
+    \topsep=0pt
+    \parsep=0pt
+    \itemsep=0pt
+  }%
+  \item\relax
+  \noindent
+  \textbf{Abstract: }%
+}{%
+  \endlist
+  \par
+  \endgroup
+  \vspace{\baselineskip}%
+}
+
+%================================================
+% ヘッダー・フッター
+%================================================
+
+\RequirePackage{fancyhdr}
+
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\pagestyle{fancy}
+
+%================================================
+% ハイパーリンク
+%================================================
+% LuaLaTeX は PDF を直接出力するため
+% dvipdfmx オプションは指定しない
+%================================================
+
+\RequirePackage[
+  hidelinks,
+  breaklinks=true
+]{hyperref}
+
+\endinput
