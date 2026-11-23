@@ -1,0 +1,20 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX (project build script)",
+      "tools": ["project-build"]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "project-build",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "%DIR%/build.ps1"],
+      "env": {}
+    }
+  ],
+  "latex-workshop.view.pdf.viewer": "tab"
+}

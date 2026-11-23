@@ -4,7 +4,7 @@ $projectRoot = $PSScriptRoot
 
 Push-Location $projectRoot
 try {
-    & latexmk @args main.tex
+    & latexmk -lualatex @args main.tex
     if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
     }
